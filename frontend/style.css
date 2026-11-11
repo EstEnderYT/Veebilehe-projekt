@@ -1,0 +1,94 @@
+:root {
+    color-scheme: light dark;
+    --background-color: light-dark(#adadad, #2a2729);
+    --text-color: light-dark(black, white);
+    --accent-color: #a90000;
+}
+
+@font-face {
+    font-family: RETROTECH;
+    src: url('./RETROTECH.ttf');
+}
+
+p {
+    font-family: RETROTECH;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px 20% 0px 20%;
+}
+
+h1 {
+    font-family: RETROTECH;
+    font-size: 40px;
+    text-align: center;
+    font-weight: normal;
+}
+
+h2 {
+    font-family: RETROTECH;
+    font-size: 30px;
+    text-align: center;
+}
+
+h3 {
+    font-family: RETROTECH;
+    font-size: 25px;
+    text-align: center;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.box{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 40px;
+}
+
+.card{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+	padding: 5px;
+}
+
+.päis {
+    width: 100%;
+    height: 100px;
+    background-color: var(--accent-color);
+    color: white;
+    font-family: RETROTECH;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.nupp {
+    width: 20%;
+    height: 30px;
+    background-color: var(--accent-color);
+    color: white;
+    font-family: RETROTECH;
+    font-size: 30px;
+    border: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
