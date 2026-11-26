@@ -1,3 +1,4 @@
+import asyncio
 import pygame
 from os import path
 from math import pi as pi
@@ -8,8 +9,7 @@ pygame.init()
 aknaSuurus = (600, 650) #Pac-man on originaalselt ruudukujulisel aknal, kuid kõrguse suurendamine 50 piksli võrra lisab ruumi skoori ja muu jaoks.
 aken = pygame.display.set_mode(aknaSuurus)
 taimer = pygame.time.Clock()
-font = pygame.font.Font(path.join(path.abspath(__file__), '..', '..', 'frontend', 'RETROTECH.ttf'), 30)
-mäng = True
+font = pygame.font.Font(path.join(path.dirname(path.abspath(__file__)), 'RETROTECH.ttf'), 30)
 
 #Leveli maatriks, kus iga number tähistab erikujulisi seinu, tühjust ja muid vajalike paane.
 level1 = [
@@ -47,8 +47,8 @@ level1 = [
 [3, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 3],
 [7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8]
 ]
-seinaVärv = 'blue'
-punktiVärv = 'white'
+seinaVärv = 'burlywood4'
+punktiVärv = 'goldenrod1'
 
 mängijaX = 300
 mängijaY = 335
@@ -98,16 +98,24 @@ def joonistaMängija():
     for i in range(1, 4):
         pygame.draw.circle(aken, 'brown', (mängijaX + i * uniform(-auguSuurus, auguSuurus), mängijaY + i * uniform(-auguSuurus, auguSuurus)), auguSuurus)
 
+async def main():
 
-while mäng:
-    taimer.tick(30)
-    aken.fill('black')
-    joonistaLevel(level1)
-    joonistaMängija()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            mäng = False
+    mäng = True
 
-    pygame.display.flip()
+    while mäng:
 
-pygame.quit()
+        for event in pygame.event.get():
+             if event.type == pygame.QUIT:
+                mäng = False
+
+        aken.fill((64, 54, 46))
+        joonistaLevel(level1)
+        joonistaMängija()
+        pygame.display.flip()
+
+        await asyncio.sleep(0)
+        taimer.tick(30)
+
+    pygame.quit()
+
+asyncio.run(main())
